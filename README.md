@@ -12,7 +12,7 @@ The pipeline takes an RTSP (H.264) stream (e.g., from an IP camera), decodes it,
 
 ## 🎥 GStreamer Pipeline
 
-```bash
+```bash id="k93x1p"
 gst-launch-1.0 -v \
 rtspsrc location="<network stream URL>" latency=100 drop-on-latency=false \
 ! rtph264depay \
@@ -45,7 +45,7 @@ Install both:
 * Run the **Runtime installer first**, then the **Development installer**
 * Use the default installation path:
 
-```
+```id="k2q1lt"
 C:\gstreamer\1.0\msvc_x86_64\
 ```
 
@@ -55,7 +55,7 @@ C:\gstreamer\1.0\msvc_x86_64\
 
 Add the following directory to your system environment variables:
 
-```
+```id="y4z2v8"
 C:\gstreamer\1.0\msvc_x86_64\bin
 ```
 
@@ -65,7 +65,7 @@ Restart your terminal after updating PATH.
 
 ### 4. Verify Installation
 
-```bash
+```bash id="z2l8qd"
 gst-launch-1.0 --version
 ```
 
@@ -73,7 +73,7 @@ gst-launch-1.0 --version
 
 ### 5. Test GStreamer
 
-```bash
+```bash id="9lqg3v"
 gst-launch-1.0 videotestsrc ! autovideosink
 ```
 
@@ -92,7 +92,7 @@ If a video window appears, GStreamer is installed correctly.
 2. Run the GStreamer pipeline
 
 3. Open the LabVIEW VI:
-   **`mjpegReader (UDP)V3`**
+   **`mjpegReader`**
 
 4. Configure LabVIEW to receive UDP data:
 
@@ -100,6 +100,23 @@ If a video window appears, GStreamer is installed correctly.
    * **Port:** 5000
 
 5. Run the VI to view the MJPEG stream
+
+---
+
+## 🧩 LabVIEW Dependencies
+
+To correctly decode and display the MJPEG stream in LabVIEW, additional VIs are required.
+
+You may need to download or include the following:
+
+* **Convert JPEG String to LabVIEW Image**
+* **Convert LabVIEW Image datatype to IMAQ Image datatype**
+* **Image To IMAQ (LV2012 NIVerified)**
+
+Example source for required VIs:
+https://forums.ni.com/t5/Example-Code/Convert-JPEG-String-to-LabVIEW-Image/ta-p/3512224
+
+> ⚠️ Ensure all dependencies are properly linked in your LabVIEW project to avoid broken VI references.
 
 ---
 
